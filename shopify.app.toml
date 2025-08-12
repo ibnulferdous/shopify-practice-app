@@ -1,0 +1,32 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "7cbd70e6bca79929c0d3f5d5c04ea2e7"
+name = "practice-app"
+handle = "practice-app-142"
+application_url = "https://protected-spot-experts-search.trycloudflare.com"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-07"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products, write_products, read_customers, write_customers, read_discounts, write_discounts, read_orders, write_orders"
+
+[auth]
+redirect_urls = ["https://protected-spot-experts-search.trycloudflare.com/auth/callback", "https://protected-spot-experts-search.trycloudflare.com/auth/shopify/callback", "https://protected-spot-experts-search.trycloudflare.com/api/auth/callback"]
+
+[pos]
+embedded = false
